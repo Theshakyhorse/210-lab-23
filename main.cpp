@@ -37,6 +37,13 @@ int main() {
         if (choice == 1) {
             add_goat(goats, names, colors);
         }
+        if (choice == 2) {
+            delete_goat(goats);
+        }
+        if (choice == 3) {
+            display_trip(goats);
+        }
+        choice = main_menu();
     }
     return 0;
 }
@@ -98,8 +105,8 @@ int select_goat (list<Goat> trip) {
     cin >> choice;
     cout << endl;
     //validates
-    while ((choice > 0) && (choice < i)) {
-        cout << "Please choose a valid choice of 1-" << i-1 << endl;
+    while ((choice < 1) && (choice >= i)) {
+        cout << "Please choose a valid choice between 1 and " << i-1 << endl;
         cin >> choice;
         cout << endl;
     }
