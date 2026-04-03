@@ -17,6 +17,7 @@ int main_menu();
 int main() {
     srand(time(0));
     bool again;
+    int choice;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -30,7 +31,7 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    main_menu();
+    choice = main_menu();
     return 0;
 }
 
@@ -49,4 +50,13 @@ int main_menu() {
         cout << endl;
     }
     return choice;
+}
+
+void add_goat(list<Goat> &trip, string names[SZ_NAMES], string colors[SZ_COLORS]) {
+    int age = rand() % MAX_AGE;
+    int color = rand () % SZ_COLORS;
+    int names = rand () % SZ_NAMES;
+
+    Goat *temp = new Goat();
+    trip.push_back(*temp);
 }
