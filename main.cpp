@@ -6,7 +6,7 @@
 #include "Goat.h"
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20, W = 15;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -32,7 +32,9 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    cout << setw(W) << "*** GOAT MANAGER 3001***" << endl;
     choice = main_menu();
+    //loop to keep program going until user quits
     while (choice != 4) {
         if (choice == 1) {
             add_goat(goats, names, colors);
@@ -51,11 +53,11 @@ int main() {
 int main_menu() {
     int choice;
     //outputs options and asks user to decide
-    cout << "[1] Add a goat" << endl;
-    cout << "[2] Delete a goat" << endl;
-    cout << "[3] List goats" << endl;
-    cout << "[4] Quit" << endl;
-    cout << "Choice --> ";
+    cout << setw(W) << "[1] Add a goat" << endl;
+    cout << setw(W) << "[2] Delete a goat" << endl;
+    cout << setw(W) << "[3] List goats" << endl;
+    cout << setw(W) << "[4] Quit" << endl;
+    cout << setw(W) << "Choice --> ";
     cin >> choice;
     cout << endl;
     //validates
@@ -100,11 +102,11 @@ int select_goat (list<Goat> trip) {
     int i = 1;
     //outputs options and asks user to decide
     for (Goat g : trip) {
-        cout << "[" << i << "] " << g.get_name() << " (";
+        cout << setw(W) << "[" << i << "] " << g.get_name() << " (";
         cout << g.get_age() << ", " << g.get_color() << ")" << endl;
         ++i;
     }
-    cout << "Choice --> ";
+    cout << setw(W) << "Choice --> ";
     cin >> choice;
     cout << endl;
     //validates
@@ -119,7 +121,8 @@ int select_goat (list<Goat> trip) {
 //outputs goats list
 void display_trip (list<Goat> trip) {
     for (Goat g : trip) {
-        cout << g.get_name() << " (";
+        cout << setw(W) << g.get_name() << " (";
         cout << g.get_age() << ", " << g.get_color() << ")" << endl;
     }
+    cout << endl;
 }
