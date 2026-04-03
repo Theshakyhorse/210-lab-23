@@ -82,9 +82,12 @@ void add_goat(list<Goat> &trip, string names[SZ_NAMES], string colors[SZ_COLORS]
 void delete_goat(list<Goat> &trip) {
     int choice = select_goat(trip);
     int i = 1;
-    for (auto it = trip.begin(); it != trip.end(); ++it) {
+    for (auto it = trip.begin(); it != trip.end();) {
         if (choice == i) {
-            trip.erase(it);
+            it = trip.erase(it);
+        } 
+        else {
+            ++it;
         }
         ++i;
     }   
@@ -105,7 +108,7 @@ int select_goat (list<Goat> trip) {
     cin >> choice;
     cout << endl;
     //validates
-    while ((choice < 1) && (choice >= i)) {
+    while ((choice < 1) || (choice >= i)) {
         cout << "Please choose a valid choice between 1 and " << i-1 << endl;
         cin >> choice;
         cout << endl;
