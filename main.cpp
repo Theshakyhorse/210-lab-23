@@ -53,11 +53,11 @@ int main() {
 int main_menu() {
     int choice;
     //outputs options and asks user to decide
-    cout << setw(W) << "[1] Add a goat" << endl;
-    cout << setw(W) << "[2] Delete a goat" << endl;
-    cout << setw(W) << "[3] List goats" << endl;
-    cout << setw(W) << "[4] Quit" << endl;
-    cout << setw(W) << "Choice --> ";
+    cout << "[1] Add a goat" << endl;
+    cout << "[2] Delete a goat" << endl;
+    cout << "[3] List goats" << endl;
+    cout << "[4] Quit" << endl;
+    cout << "Choice --> ";
     cin >> choice;
     cout << endl;
     //validates
