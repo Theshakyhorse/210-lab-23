@@ -18,6 +18,7 @@ int main() {
     srand(time(0));
     bool again;
     int choice;
+    list<Goat> goats;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -32,6 +33,11 @@ int main() {
     fin1.close();
 
     choice = main_menu();
+    while (choice != 4) {
+        if (choice == 1) {
+            add_goat(goats, names, colors);
+        }
+    }
     return 0;
 }
 
@@ -65,6 +71,7 @@ void add_goat(list<Goat> &trip, string names[SZ_NAMES], string colors[SZ_COLORS]
     trip.push_back(*temp);
 }
 
+//deletes a goat user selected
 void delete_goat(list<Goat> &trip) {
     int choice = select_goat(trip);
     int i = 1;
@@ -73,14 +80,15 @@ void delete_goat(list<Goat> &trip) {
             trip.erase(it);
         }
         ++i;
-    }
-        
+    }   
     
 }
 
+//user selects a goat
 int select_goat (list<Goat> trip) {
     int choice;
     int i = 1;
+    //outputs options and asks user to decide
     for (Goat g : trip) {
         cout << "[" << i << "] " << g.get_name() << " (";
         cout << g.get_age() << ", " << g.get_color() << ")" << endl;
@@ -89,6 +97,7 @@ int select_goat (list<Goat> trip) {
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
+    //validates
     while ((choice > 0) && (choice < i)) {
         cout << "Please choose a valid choice of 1-" << i-1 << endl;
         cin >> choice;
@@ -97,6 +106,7 @@ int select_goat (list<Goat> trip) {
     return choice;
 }
 
+//outputs goats list
 void display_trip (list<Goat> trip) {
     for (Goat g : trip) {
         cout << g.get_name() << " (";
