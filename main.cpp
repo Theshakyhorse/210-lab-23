@@ -63,10 +63,24 @@ void add_goat(list<Goat> &trip, string names[SZ_NAMES], string colors[SZ_COLORS]
 }
 
 void delete_goat(list<Goat> &trip) {
-    trip.erase(select_goat());
+    int choice = select_goat(trip);
 }
 
 int select_goat (list<Goat> trip) {
-
-    return ;
+    int choice;
+    int i = 1;
+    for (Goat g : trip) {
+        cout << "[" << i << "] " << g.get_name() << " (";
+        cout << g.get_age() << ", " << g.get_color() << ")" << endl;
+        ++i;
+    }
+    cout << "Choice --> ";
+    cin >> choice;
+    cout << endl;
+    while ((choice > 0) && (choice < i)) {
+        cout << "Please choose a valid choice of 1-" << i-1 << endl;
+        cin >> choice;
+        cout << endl;
+    }
+    return choice;
 }
