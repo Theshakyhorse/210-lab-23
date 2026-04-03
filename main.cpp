@@ -30,9 +30,23 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-
-
-
+    main_menu();
     return 0;
 }
 
+int main_menu() {
+    int choice;
+    cout << "[1] Add a goat" << endl;
+    cout << "[2] Delete a goat" << endl;
+    cout << "[3] List goats" << endl;
+    cout << "[4] Quit" << endl;
+    cout << "Choice --> ";
+    cin >> choice;
+    cout << endl;
+    while ((choice != 1) && (choice != 2) && (choice != 3) && (choice != 4)) {
+        cout << "Please choose a valid choice of 1, 2, 3, or 4" << endl;
+        cin >> choice;
+        cout << endl;
+    }
+    return choice;
+}
