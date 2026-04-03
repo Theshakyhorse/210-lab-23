@@ -37,6 +37,7 @@ int main() {
 
 int main_menu() {
     int choice;
+    //outputs options and asks user to decide
     cout << "[1] Add a goat" << endl;
     cout << "[2] Delete a goat" << endl;
     cout << "[3] List goats" << endl;
@@ -44,6 +45,7 @@ int main_menu() {
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
+    //validates
     while ((choice != 1) && (choice != 2) && (choice != 3) && (choice != 4)) {
         cout << "Please choose a valid choice of 1, 2, 3, or 4" << endl;
         cin >> choice;
@@ -52,6 +54,7 @@ int main_menu() {
     return choice;
 }
 
+//adds a goat w/ random age, name, and color
 void add_goat(list<Goat> &trip, string names[SZ_NAMES], string colors[SZ_COLORS]) {
     int age = rand() % (MAX_AGE+1);
     int c = rand () % SZ_COLORS;
@@ -64,6 +67,15 @@ void add_goat(list<Goat> &trip, string names[SZ_NAMES], string colors[SZ_COLORS]
 
 void delete_goat(list<Goat> &trip) {
     int choice = select_goat(trip);
+    int i = 1;
+    for (auto it = trip.begin(); it != trip.end(); ++it) {
+        if (choice == i) {
+            trip.erase(it);
+        }
+        ++i;
+    }
+        
+    
 }
 
 int select_goat (list<Goat> trip) {
@@ -83,4 +95,11 @@ int select_goat (list<Goat> trip) {
         cout << endl;
     }
     return choice;
+}
+
+void display_trip (list<Goat> trip) {
+    for (Goat g : trip) {
+        cout << g.get_name() << " (";
+        cout << g.get_age() << ", " << g.get_color() << ")" << endl;
+    }
 }
